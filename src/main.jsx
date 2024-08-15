@@ -13,6 +13,7 @@ import Home from "./Pages/Home";
 import Login from "./Pages/Login";
 import Signup from "./Pages/Signup";
 import {NextUIProvider} from '@nextui-org/react'
+import AuthProvider from "./Providers/AuthProvider";
 const router = createBrowserRouter([
   {
     path: "/",
@@ -39,7 +40,9 @@ const router = createBrowserRouter([
 ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
     <NextUIProvider>
+    <AuthProvider>
     <RouterProvider router={router} />
+    </AuthProvider>
     </NextUIProvider>
   </React.StrictMode>
 );

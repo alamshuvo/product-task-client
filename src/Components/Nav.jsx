@@ -16,7 +16,9 @@ const Nav = () => {
                     />
                     <NavbarBrand>
                        
-                        <p className="font-bold text-inherit">ACME</p>
+                    <div className='w-[120px]'>
+                    <img className='w-[50%]' src="https://i.ibb.co/JBNpKGj/31530356-bird-2.jpg" alt="" />
+                    </div>
                     </NavbarBrand>
                 </NavbarContent>
 

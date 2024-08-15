@@ -11,6 +11,12 @@ const Footer = () => {
                     <Link to={"https://www.linkedin.com/in/iftakhar-alam-shuvo/"}>Linkedin</Link>
                 </div>
                 <div>
+                        
+                <div className='lg:w-[100px] w-[50px]'>
+                    <img className='w-[50%]' src="https://i.ibb.co/JBNpKGj/31530356-bird-2.jpg" alt="" />
+                    </div>
+                </div>
+                <div>
                     <p>Please Contact us</p>
                     <p>01980640702</p>
                     <p>iftakharalamshuvo11 <br />@gmail.com</p>
