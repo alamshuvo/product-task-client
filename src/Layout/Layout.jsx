@@ -6,7 +6,7 @@ import Footer from '../Components/Footer';
 const Layout = () => {
     return (
         <div className='font-Condensed'>
-            <div className='container mx-auto mt-5 '>
+            <div className='container mx-auto lg:mt-5 '>
                 <Nav></Nav>
             </div>
             <div className='min-h-screen '>

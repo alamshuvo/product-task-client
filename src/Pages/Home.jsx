@@ -1,9 +1,20 @@
 import React from 'react';
 import { Card, CardHeader, CardBody, Image } from "@nextui-org/react";
+import Paginationa from '../Components/pagination';
+import Dropdowna from '../Components/Dropdowna';
+
 
 const Home = () => {
     return (
         <div className='container mx-auto'>
+           
+            <div className='my-10'>
+            <p className='text-2xl font-bold '>Short By</p>
+            <Dropdowna></Dropdowna>
+            </div>
+
+
+
            <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 my-4'>
            <Card className="py-4">
                 <CardHeader className="pb-0 pt-2 px-4 flex-col items-start">
@@ -21,6 +32,9 @@ const Home = () => {
                 </CardBody>
             </Card>
            </div>
+          <div className='flex justify-center items-center'>
+          <Paginationa></Paginationa>
+          </div>
         </div>
     );
 };
