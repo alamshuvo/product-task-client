@@ -1,13 +1,53 @@
 import { Divider, Input } from '@nextui-org/react';
-import React from 'react';
+import React, { useContext } from 'react';
 import { FaGoogle, FaRegEye, FaRegEyeSlash } from 'react-icons/fa';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
+import { AuthContext } from '../Providers/AuthProvider';
+import toast from 'react-hot-toast';
 
 
 const Login = () => {
+    const {signIn,googleSignIn}=useContext(AuthContext)
     const [isVisible, setIsVisible] = React.useState(false);
+    const navigate=useNavigate()
 
     const toggleVisibility = () => setIsVisible(!isVisible);
+
+    const handleLogin = (e)=>{
+        e.preventDefault()
+        const form=e.target;
+        const email=form.email.value;
+        const password=form.pass.value;
+        signIn(email,password)
+        .then(res=>{
+            console.log(res.user);
+           
+            toast.success('User Successfully created ')
+            navigate("/")
+        
+        })
+        .then(error=>{
+            console.log(error);
+        })
+      
+        
+        
+       }
+       const handleGoogleSignIn = () =>{
+        googleSignIn()
+        .then(res=>{
+            console.log(res.user);
+           
+            toast.success('User Successfully created ')
+            navigate("/")
+        
+        })
+        .then(error=>{
+            console.log(error);
+        })
+    }
+
+
     return (
         <div className='border-3 my-4 p-4'>
 
@@ -16,7 +56,7 @@ const Login = () => {
                 <div className=' w-full h-full flex gap-4 flex-col justify-center items-center   '>
                     <p className='text-3xl font-bold '>Login </p>
 
-                    <form action="" className='my-5 w-full flex flex-col justify-center items-center'>
+                    <form onSubmit={ handleLogin} action="" className='my-5 w-full flex flex-col justify-center items-center'>
                         <div className=' w-full lg:w-[50%] mb-5'>
                             <Input type="email" label="Email" placeholder="Enter your email" />
                         </div>
@@ -44,10 +84,10 @@ const Login = () => {
                     </form>
                 </div>
                 <Divider className="my-4" />
-                <div className='flex gap-3 justify-center items-center'>
-                    <p className='font-bold'>Login with Google </p>
-
-                    <FaGoogle className='text-3xl font-bold ' />
+                <div >
+                    <button className='flex gap-3 justify-center items-center' onClick={handleGoogleSignIn}>Login with Google  <FaGoogle className='text-3xl font-bold ' /></button>
+            
+                   
                 </div>
                 <Divider className="my-4" />
                 <div>

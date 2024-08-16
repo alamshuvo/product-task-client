@@ -14,6 +14,7 @@ import Login from "./Pages/Login";
 import Signup from "./Pages/Signup";
 import {NextUIProvider} from '@nextui-org/react'
 import AuthProvider from "./Providers/AuthProvider";
+import { Toaster } from "react-hot-toast";
 const router = createBrowserRouter([
   {
     path: "/",
@@ -42,6 +43,7 @@ ReactDOM.createRoot(document.getElementById("root")).render(
     <NextUIProvider>
     <AuthProvider>
     <RouterProvider router={router} />
+    <Toaster />
     </AuthProvider>
     </NextUIProvider>
   </React.StrictMode>

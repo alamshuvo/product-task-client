@@ -1,12 +1,16 @@
 import { Divider, Input } from '@nextui-org/react';
 import React, { useContext } from 'react';
 import { FaGoogle, FaRegEye, FaRegEyeSlash } from 'react-icons/fa';
-import { Link } from 'react-router-dom';
+import { Link, Navigate, useLocation, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../Providers/AuthProvider';
+import toast from 'react-hot-toast';
 
 const Signup = () => {
     const {createUser}=useContext(AuthContext)
     const [isVisible, setIsVisible] = React.useState(false);
+    const location=useLocation();
+    const navigate=useNavigate()
+    console.log(location);
 
     const toggleVisibility = () => setIsVisible(!isVisible);
  const handleSignUp = (e)=>{
@@ -15,9 +19,19 @@ const Signup = () => {
   const email=form.email.value;
   const password=form.pass.value;
   createUser(email,password)
-//   .then(console.log("user created sucessfully"))
-//   .catch(console.log("something fisshy "))
-  
+  .then(res=>{
+    console.log(res.user);
+   
+    toast.success('User Successfully created ')
+    navigate("/")
+
+})
+.then(error=>{
+    console.log(error);
+})
+
+
+
   
  }
 
