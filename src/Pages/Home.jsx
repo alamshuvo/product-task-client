@@ -1,10 +1,26 @@
-import React from 'react';
-import { Card, CardHeader, CardBody, Image } from "@nextui-org/react";
+import React, { useEffect, useState } from 'react';
+
 import Paginationa from '../Components/pagination';
 import Dropdowna from '../Components/Dropdowna';
+import { useLoaderData } from 'react-router-dom';
 
 
 const Home = () => {
+    const [itemPerPage,setItemPerPage]=useState(10);
+    
+    const totalCount=useLoaderData()
+    // const itemPerPage=10;
+    const numberOfPages=Math.ceil(totalCount.total/itemPerPage)
+    const pages=[...Array(numberOfPages).keys()]
+    // useEffect(
+    //     ()=>{
+    //         fetch(`http://localhost:5000/product?page=${}`)
+    //         .then(res=>res.json())
+    //         .then(data=>setProducts(data))
+    //     }
+    //     ,[])
+
+    console.log(totalCount,numberOfPages,pages);
     return (
         <div className='container mx-auto'>
            
@@ -15,25 +31,8 @@ const Home = () => {
 
 
 
-           <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 my-4'>
-           <Card className="py-4">
-                <CardHeader className="pb-0 pt-2 px-4 flex-col items-start">
-                    <p className="text-tiny uppercase font-bold">Daily Mix</p>
-                    <small className="text-default-500">12 Tracks</small>
-                    <h4 className="font-bold text-large">Frontend Radio</h4>
-                </CardHeader>
-                <CardBody className="overflow-visible py-2">
-                    <Image
-                        alt="Card background"
-                        className="object-cover rounded-xl"
-                        src="https://nextui.org/images/hero-card-complete.jpeg"
-                        width={270}
-                    />
-                </CardBody>
-            </Card>
-           </div>
-          <div className='flex justify-center items-center'>
-          <Paginationa></Paginationa>
+          <div className='flex justify-center items-center my-5'>
+          <Paginationa pages={pages} itemPerPage={itemPerPage} setItemPerPage={setItemPerPage}></Paginationa>
           </div>
         </div>
     );
