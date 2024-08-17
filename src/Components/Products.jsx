@@ -12,7 +12,8 @@ const Products = ({ products }) => {
                     products.length > 0 && products?.map(product => <Card key={product._id} className="py-4">
                         <CardHeader className="pb-0 pt-2 px-4 flex-col items-start">
                             <p className="text-tiny uppercase font-bold">{product.
-                                productName}</p>
+
+                                brandName}</p>
                             <small className=" text-primary font-bold">{product.price}tk</small>
                             <h4 className="font-bold text-large">Category : {product.
                                 category}</h4>

@@ -2,29 +2,29 @@ import React, { useEffect, useState } from 'react';
 import { Pagination, Button } from "@nextui-org/react";
 import Products from './Products';
 
-const Paginationa = ({pages,itemPerPage,setItemPerPage}) => {
-    console.log(pages);
+const Paginationa = ({pages,itemPerPage,setItemPerPage,products}) => {
+    console.log(pages,products);
     const [currentPage, setCurrentPage] = useState(pages[0]);
-    const [products,setProducts]=useState(0)
+    const [productsa,setProductsa]=useState(0)
 
     const handleValue=e=>{
         const val =parseInt(e.target.value);
         setItemPerPage(val)
         setCurrentPage(pages[0])
     }
-
-    useEffect(
-        ()=>{
-            fetch(`http://localhost:5000/product?page=${currentPage}&size=${itemPerPage}`)
-            .then(res=>res.json())
-            .then(data=>setProducts(data))
-        }
-        ,[currentPage,itemPerPage])
-        console.log(products);
+console.log(products);
+    // useEffect(
+    //     ()=>{
+    //         fetch(`http://localhost:5000/product?page=${currentPage}&size=${itemPerPage}`)
+    //         .then(res=>res.json())
+    //         .then(data=>setProductsa(data))
+    //     }
+    //     ,[currentPage,itemPerPage])
+    //     console.log(products);
         
     return (
         <div>
-            <Products products={products}></Products>
+            <Products products={productsa}></Products>
             <div className="flex flex-col gap-5">
                 <p className="text-small text-default-500">Selected Page: {currentPage}</p>
                 <Pagination
@@ -52,7 +52,7 @@ const Paginationa = ({pages,itemPerPage,setItemPerPage}) => {
                     </Button>
                 </div>
             </div>
-            <div className='border-2 my-3 flex justify-center items-center'>
+            <div className='border-2 my-3 w-[10%] flex justify-center items-center'>
               <select value={itemPerPage} onChange={handleValue} name="" id="">
                 <option value="5">5</option>
                 <option value="10">10</option>
