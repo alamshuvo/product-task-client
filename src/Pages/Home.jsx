@@ -28,7 +28,7 @@ const Home = () => {
         {
           params: {
             page,
-            limit: 6,
+            limit: 8,
             search,
             brand,
             category,
