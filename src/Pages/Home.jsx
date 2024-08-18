@@ -24,7 +24,7 @@ const Home = () => {
 
     try {
       const response = await axios.get(
-        "http://localhost:5000/product",
+        "https://product-task-server.vercel.app/product",
         {
           params: {
             page,
